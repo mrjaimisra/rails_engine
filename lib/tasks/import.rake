@@ -8,9 +8,9 @@ namespace :import do
      counter = 0
 
     CSV.foreach(filename, headers: true) do |row|
-      Customer.create(row.to_h.except("id"))
+      customer = Customer.create(row.to_h.except("id"))
 
-      puts "#{first_name} #{last_name} - #{customer.errors.full_messages.join(",")}" if customer.errors.any?
+      puts "#{customer.first_name} #{customer.last_name} - #{customer.errors.full_messages.join(",")}" if customer.errors.any?
       counter += 1 if customer.persisted?
     end
 
@@ -19,13 +19,13 @@ namespace :import do
 
   desc "Import merchants from CSV"
   task merchants: :environment do
-    filename = File.join Rails.root, "/data/customers.csv"
+    filename = File.join Rails.root, "/data/merchants.csv"
      counter = 0
 
     CSV.foreach(filename, headers: true) do |row|
-      Merchant.create(row.to_h.except("id"))
+      merchant = Merchant.create(row.to_h.except("id"))
 
-      puts "#{name} - #{merchant.errors.full_messages.join(", ")}" if merchant.errors.any?
+      puts "#{merchant.name} - #{merchant.errors.full_messages.join(", ")}" if merchant.errors.any?
       counter += 1 if merchant.persisted?
     end
 
@@ -38,9 +38,9 @@ namespace :import do
      counter = 0
 
     CSV.foreach(filename, headers: true) do |row|
-      Item.create(row.to_h.except("id"))
+      item = Item.create(row.to_h.except("id"))
 
-      puts "#{name} - #{item.errors.full_messages.join(",")}" if item.errors.any?
+      puts "#{item.name} - #{item.errors.full_messages.join(",")}" if item.errors.any?
       counter += 1 if item.persisted?
     end
 
@@ -53,7 +53,7 @@ namespace :import do
      counter = 0
 
     CSV.foreach(filename, headers: true) do |row|
-      Invoice.create(row.to_h.except("id"))
+      invoice = Invoice.create(row.to_h.except("id"))
 
       puts "#{invoice.id} - #{invoice.errors.full_messages.join(",")}" if invoice.errors.any?
       counter += 1 if invoice.persisted?
@@ -68,7 +68,7 @@ namespace :import do
      counter = 0
 
     CSV.foreach(filename, headers: true) do |row|
-      InvoiceItem.create(row.to_h.except("id"))
+      invoice_item = InvoiceItem.create(row.to_h.except("id"))
 
       puts "#{invoice_item.id} - #{invoice_item.errors.full_messages.join(",")}" if invoice_item.errors.any?
       counter += 1 if invoice_item.persisted?
@@ -83,7 +83,7 @@ namespace :import do
      counter = 0
 
     CSV.foreach(filename, headers: true) do |row|
-      Transaction.create(row.to_h.except("id", "credit_card_expiration_date"))
+      transaction = Transaction.create(row.to_h.except("id", "credit_card_expiration_date"))
 
       puts "#{transaction.id} - #{transaction.errors.full_messages.join(",")}" if transaction.errors.any?
       counter += 1 if transaction.persisted?

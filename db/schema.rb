@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150915062608) do
+ActiveRecord::Schema.define(version: 20150915200544) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "first_name"
@@ -20,24 +20,28 @@ ActiveRecord::Schema.define(version: 20150915062608) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "invoice_items", id: false, force: :cascade do |t|
+    t.integer  "invoice_id", null: false
+    t.integer  "item_id",    null: false
+    t.integer  "quantity"
+    t.integer  "unit_price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invoice_items", ["invoice_id", "item_id"], name: "index_invoice_items_on_invoice_id_and_item_id"
+  add_index "invoice_items", ["item_id", "invoice_id"], name: "index_invoice_items_on_item_id_and_invoice_id"
+
   create_table "invoices", force: :cascade do |t|
-    t.string  "status"
-    t.integer "customer_id"
-    t.integer "merchant_id"
+    t.string   "status"
+    t.integer  "customer_id"
+    t.integer  "merchant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "invoices", ["customer_id"], name: "index_invoices_on_customer_id"
   add_index "invoices", ["merchant_id"], name: "index_invoices_on_merchant_id"
-
-  create_table "invoices_items", id: false, force: :cascade do |t|
-    t.integer "invoice_id", null: false
-    t.integer "item_id",    null: false
-    t.integer "quantity"
-    t.integer "unit_price"
-  end
-
-  add_index "invoices_items", ["invoice_id", "item_id"], name: "index_invoices_items_on_invoice_id_and_item_id"
-  add_index "invoices_items", ["item_id", "invoice_id"], name: "index_invoices_items_on_item_id_and_invoice_id"
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
