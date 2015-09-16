@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   get "/api/v1/invoice_items/find_all", to: "api/v1/invoice_items#find_all"
   get "/api/v1/invoice_items/random", to: "api/v1/invoice_items#random"
 
+  get "/api/v1/transactions/find", to: "api/v1/transactions#find"
+  get "/api/v1/transactions/find_all", to: "api/v1/transactions#find_all"
+  get "/api/v1/transactions/random", to: "api/v1/transactions#random"
+
   namespace :api do
     namespace :v1 do
       resources :merchants, only: [:index, :show]
@@ -30,6 +34,7 @@ Rails.application.routes.draw do
       resources :items, only: [:index, :show]
       resources :invoices, only: [:index, :show]
       resources :invoice_items, only: [:index, :show]
+      resources :transactions, only: [:index, :show]
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
