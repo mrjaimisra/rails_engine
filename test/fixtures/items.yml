@@ -1,7 +1,7 @@
 one:
   id: 1
   name: Item Qui Esse
-  description: Nihil autem sit odio inventore deleniti. Est laudantium ratione distinctio laborum. Minus voluptatem nesciunt assumenda dicta voluptatum porro.
+  description: Nihil autem sit odio inventore deleniti.
   unit_price: 75107
   merchant_id: 1
   created_at: 2012-03-27 14:53:59 UTC
@@ -10,8 +10,26 @@ one:
 two:
   id: 2
   name: Item Autem Minima
-  description: Cumque consequuntur ad. Fuga tenetur illo molestias enim aut iste. Provident quo hic aut. Aut quidem voluptates dolores. Dolorem quae ab alias tempora.
+  description: Cumque consequuntur ad.
   unit_price: 67076
   merchant_id: 1
+  created_at: 2012-03-27 14:53:59 UTC
+  updated_at: 2012-03-27 14:53:59 UTC
+
+three:
+  id: 3
+  name: Iiii
+  description: Nihil autem sit odio inventore deleniti.
+  unit_price: 75107
+  merchant_id: 14
+  created_at: 2012-03-27 14:53:59 UTC
+  updated_at: 2012-03-27 14:53:59 UTC
+
+four:
+  id: 4
+  name: Blah Blah
+  description: Crieus jtheos kthneklsp.
+  unit_price: 80888
+  merchant_id: 2
   created_at: 2012-03-27 14:53:59 UTC
   updated_at: 2012-03-27 14:53:59 UTC
