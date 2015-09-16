@@ -7,8 +7,8 @@ class Api::V1::CustomersControllerTest < ActionController::TestCase
     customers = JSON.parse(response.body, symbolize_names: true)
 
     assert_response :success
-    assert_equal "Cecelia", customers.first[:first_name]
-    assert_equal "Ondricka", customers.last[:last_name]
+    assert_equal "Joey", customers.first[:first_name]
+    assert_equal "Osinski", customers.last[:last_name]
   end
 
   test "#show" do
@@ -35,7 +35,7 @@ class Api::V1::CustomersControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_equal "Cecelia", customer[:first_name]
-    assert_equal "Osinski", customer[:last_name]
+    assert_equal "Ondricka", customer[:last_name]
   end
 
   test "#find by last name" do
