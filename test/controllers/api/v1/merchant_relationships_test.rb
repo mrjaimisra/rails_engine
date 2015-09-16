@@ -24,12 +24,12 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal 1, invoices.first[:id]
     assert_equal "shipped", invoices.first[:status]
-    assert_equal 1, invoices.first[:customer_id]
+    assert_equal 100, invoices.first[:customer_id]
     assert_equal 1, invoices.first[:merchant_id]
 
-    assert_equal 3, invoices.last[:id]
-    assert_equal "not shipped", invoices.last[:status]
-    assert_equal 2, invoices.last[:customer_id]
+    assert_equal 2, invoices.last[:id]
+    assert_equal "shipped", invoices.last[:status]
+    assert_equal 200, invoices.last[:customer_id]
     assert_equal 1, invoices.last[:merchant_id]
   end
 end
