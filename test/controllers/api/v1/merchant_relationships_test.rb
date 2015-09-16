@@ -8,12 +8,12 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal "Item Qui Esse", items.first[:name]
     assert_equal "Nihil autem sit odio inventore deleniti.", items.first[:description]
-    assert_equal 75107, items.first[:unit_price]
+    assert_equal "75107", items.first[:unit_price]
     assert_equal 1, items.first[:merchant_id]
 
     assert_equal "Item Autem Minima", items.last[:name]
     assert_equal "Cumque consequuntur ad.", items.last[:description]
-    assert_equal 67076, items.last[:unit_price]
+    assert_equal "67076", items.last[:unit_price]
     assert_equal 1, items.last[:merchant_id]
   end
 

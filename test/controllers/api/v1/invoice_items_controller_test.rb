@@ -11,7 +11,7 @@ class Api::V1::InvoiceItemsControllerTest < ActionController::TestCase
     assert_equal 5, invoice_items.first[:quantity]
     assert_equal 528, invoice_items.last[:item_id]
     assert_equal 2, invoice_items.last[:invoice_id]
-    assert_equal 23324, invoice_items.last[:unit_price]
+    assert_equal "23324", invoice_items.last[:unit_price]
   end
 
   test "#show" do
