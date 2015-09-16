@@ -32,8 +32,8 @@ class Api::V1::TransactionsControllerTest < ActionController::TestCase
     transaction = JSON.parse(response.body, symbolize_names: true)
 
     assert_response :success
-    assert_equal 1, transaction[:id]
-    assert_equal "success", transaction[:result]
+    assert_equal 3, transaction[:id]
+    assert_equal "failed", transaction[:result]
   end
 
   test "#find by credit_card_number" do
