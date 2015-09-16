@@ -1,12 +1,22 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      resources :customers, only: [:index, :show]
       get "customers/find", to: "customers#find"
       get "customers/find_all", to: "customers#find_all"
       get "customers/random", to: "customers#random"
+
+      resources :merchants, only: [:index, :show]
+      get "merchants/find", to: "merchants#find"
+      get "merchants/find_all", to: "merchants#find_all"
+      get "merchants/random", to: "merchants#random"
       get "merchants/:id/items", to: "merchants#items"
       get "merchants/:id/invoices", to: "merchants#invoices"
-      resources :customers, only: [:index, :show]
+
+      resources :items, only: [:index, :show]
+      get "items/find", to: "items#find"
+      get "items/find_all", to: "items#find_all"
+      get "items/random", to: "items#random"
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
