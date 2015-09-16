@@ -38,7 +38,12 @@ namespace :import do
      counter = 0
 
     CSV.foreach(filename, headers: true) do |row|
-      item = Item.create(row.to_h.except("id"))
+      item = Item.create(name: row["name"],
+                         description: row["description"],
+                         unit_price: (row["unit_price"].to_f / 100),
+                         merchant_id: row["merchant_id"],
+                         created_at: row["created_at"],
+                         updated_at: row["updated_at"])
 
       puts "#{item.name} - #{item.errors.full_messages.join(",")}" if item.errors.any?
       counter += 1 if item.persisted?
@@ -68,7 +73,12 @@ namespace :import do
      counter = 0
 
     CSV.foreach(filename, headers: true) do |row|
-      invoice_item = InvoiceItem.create(row.to_h.except("id"))
+      invoice_item = InvoiceItem.create(item_id: row["item_id"],
+                                        invoice_id: row["invoice_id"],
+                                        quantity: row["quantity"],
+                                        unit_price: (row["unit_price"].to_f / 100),
+                                        created_at: row["created_at"],
+                                        updated_at: row["updated_at"])
 
       puts "#{invoice_item.id} - #{invoice_item.errors.full_messages.join(",")}" if invoice_item.errors.any?
       counter += 1 if invoice_item.persisted?
