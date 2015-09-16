@@ -17,6 +17,11 @@ Rails.application.routes.draw do
       get "items/find", to: "items#find"
       get "items/find_all", to: "items#find_all"
       get "items/random", to: "items#random"
+
+      resources :invoices, only: [:index, :show]
+      get "invoices/find", to: "invoices#find"
+      get "invoices/find_all", to: "invoices#find_all"
+      get "invoices/random", to: "invoices#random"
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
