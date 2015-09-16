@@ -40,7 +40,7 @@ namespace :import do
     CSV.foreach(filename, headers: true) do |row|
       item = Item.create(name: row["name"],
                          description: row["description"],
-                         unit_price: (row["unit_price"].to_f / 100),
+                         unit_price: row["unit_price"].to_f / 100,
                          merchant_id: row["merchant_id"],
                          created_at: row["created_at"],
                          updated_at: row["updated_at"])
@@ -76,7 +76,7 @@ namespace :import do
       invoice_item = InvoiceItem.create(item_id: row["item_id"],
                                         invoice_id: row["invoice_id"],
                                         quantity: row["quantity"],
-                                        unit_price: (row["unit_price"].to_f / 100),
+                                        unit_price: row["unit_price"].to_f / 100,
                                         created_at: row["created_at"],
                                         updated_at: row["updated_at"])
 
