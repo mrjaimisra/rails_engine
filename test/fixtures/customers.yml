@@ -1,0 +1,17 @@
+one:
+  first_name: Joey
+  last_name: Ondricka
+  created_at: 2012-03-27 14:54:09 UTC
+  updated_at: 2012-03-27 14:54:09 UTC
+
+two:
+  first_name: Cecelia
+  last_name: Ondricka
+  created_at: 2012-03-27 14:55:09 UTC
+  updated_at: 2012-03-27 14:55:09 UTC
+
+three:
+  first_name: Cecelia
+  last_name: Osinski
+  updated_at: 2012-03-27 14:54:10 UTC
+  created_at: 2012-03-27 14:54:10 UTC
