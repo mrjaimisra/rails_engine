@@ -66,8 +66,9 @@ class Api::V1::CustomersControllerTest < ActionController::TestCase
   end
 
   test "#random" do
+    #TODO
     get :random, format: :json
-    customer = JSON.parse(response.body)
+    JSON.parse(response.body)
 
     assert_response :success
   end

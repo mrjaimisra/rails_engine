@@ -4,11 +4,11 @@ Rails.application.routes.draw do
       get "customers/find", to: "customers#find"
       get "customers/find_all", to: "customers#find_all"
       get "customers/random", to: "customers#random"
+      get "merchants/:id/items", to: "merchants#items"
+      get "merchants/:id/invoices", to: "merchants#invoices"
       resources :customers, only: [:index, :show]
     end
   end
-
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

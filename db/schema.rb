@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 20150915214339) do
   add_index "invoices", ["customer_id"], name: "index_invoices_on_customer_id"
   add_index "invoices", ["merchant_id"], name: "index_invoices_on_merchant_id"
 
+  create_table "invoices_items", id: false, force: :cascade do |t|
+    t.integer "invoice_id", null: false
+    t.integer "item_id",    null: false
+    t.integer "quantity"
+    t.integer "unit_price"
+  end
+
+  add_index "invoices_items", ["invoice_id", "item_id"], name: "index_invoices_items_on_invoice_id_and_item_id"
+  add_index "invoices_items", ["item_id", "invoice_id"], name: "index_invoices_items_on_item_id_and_invoice_id"
+
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
