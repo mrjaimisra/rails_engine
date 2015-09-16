@@ -1,32 +1,35 @@
 Rails.application.routes.draw do
+
+  get "/api/v1/customers/find", to: "api/v1/customers#find"
+  get "/api/v1/customers/find_all", to: "api/v1/customers#find_all"
+  get "/api/v1/customers/random", to: "api/v1/customers#random"
+
+  get "/api/v1/merchants/find", to: "api/v1/merchants#find"
+  get "/api/v1/merchants/find_all", to: "api/v1/merchants#find_all"
+  get "/api/v1/merchants/random", to: "api/v1/merchants#random"
+
+  get "/api/v1/items/find", to: "api/v1/items#find"
+  get "/api/v1/items/find_all", to: "api/v1/items#find_all"
+  get "/api/v1/items/random", to: "api/v1/items#random"
+
+  get "/api/v1/invoices/find", to: "api/v1/invoices#find"
+  get "/api/v1/invoices/find_all", to: "api/v1/invoices#find_all"
+  get "/api/v1/invoices/random", to: "api/v1/invoices#random"
+
+  get "/api/v1/invoice_items/find", to: "api/v1/invoice_items#find"
+  get "/api/v1/invoice_items/find_all", to: "api/v1/invoice_items#find_all"
+  get "/api/v1/invoice_items/random", to: "api/v1/invoice_items#random"
+
   namespace :api do
     namespace :v1 do
-      resources :customers, only: [:index, :show]
-      get "customers/find", to: "customers#find"
-      get "customers/find_all", to: "customers#find_all"
-      get "customers/random", to: "customers#random"
-
       resources :merchants, only: [:index, :show]
-      get "merchants/find", to: "merchants#find"
-      get "merchants/find_all", to: "merchants#find_all"
-      get "merchants/random", to: "merchants#random"
       get "merchants/:id/items", to: "merchants#items"
       get "merchants/:id/invoices", to: "merchants#invoices"
 
+      resources :customers, only: [:index, :show]
       resources :items, only: [:index, :show]
-      get "items/find", to: "items#find"
-      get "items/find_all", to: "items#find_all"
-      get "items/random", to: "items#random"
-
       resources :invoices, only: [:index, :show]
-      get "invoices/find", to: "invoices#find"
-      get "invoices/find_all", to: "invoices#find_all"
-      get "invoices/random", to: "invoices#random"
-
       resources :invoice_items, only: [:index, :show]
-      get "invoice_items/find", to: "invoice_items#find"
-      get "invoice_items/find_all", to: "invoice_items#find_all"
-      get "invoice_items/random", to: "invoice_items#random"
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
