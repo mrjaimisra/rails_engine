@@ -54,19 +54,20 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
   end
 
   test "#find by merchant_id" do
-    get :find, format: :json, merchant_id: Item.first.merchant_id
+    get :find, format: :json, merchant_id: Item.last.merchant_id
     item = JSON.parse(response.body, symbolize_names: true)
 
     assert_response :success
-    assert_equal "Item Qui Esse", item[:name]
+    assert_equal "Blah Blah", item[:name]
   end
 
   test "#find_all by name" do
-    get :find, format: :json, name: Item.first.name
-    item = JSON.parse(response.body, symbolize_names: true)
+    get :find_all, format: :json, name: Item.first.name
+    items = JSON.parse(response.body, symbolize_names: true)
 
     assert_response :success
-    assert_equal "Item Qui Esse", item[:name]
+    assert_equal items.first[:name], items.second[:name]
+    refute_equal items.first[:id], items.second[:id]
   end
 
   test "#find all by description" do
@@ -75,7 +76,7 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_equal items.first[:description], items.second[:description]
-    refute_equal items.first[:name], items.second[:name]
+    refute_equal items.first[:id], items.second[:id]
   end
 
   test "#find all by unit price" do
@@ -84,7 +85,7 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_equal items.first[:unit_price], items.last[:unit_price]
-    refute_equal items.first[:name], items.second[:name]
+    refute_equal items.first[:id], items.second[:id]
   end
 
   test "#find all by merchant_id" do
@@ -93,11 +94,11 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
 
     assert_response :success
     assert_equal items.first[:merchant_id], items.first[:merchant_id]
+    refute_equal items.first[:id], items.last[:id]
     refute_equal items.first[:name], items.last[:name]
   end
 
   test "#random" do
-    #TODO
     get :random, format: :json
     JSON.parse(response.body)
 

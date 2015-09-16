@@ -32,7 +32,7 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
     merchant = JSON.parse(response.body, symbolize_names: true)
 
     assert_response :success
-    assert_equal "Schroeder-Jerde", merchant[:name]
+    assert_equal 1, merchant[:id]
   end
 
   test "#find all by name" do
@@ -45,7 +45,6 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
   end
 
   test "#random" do
-    #TODO
     get :random, format: :json
     JSON.parse(response.body)
 
