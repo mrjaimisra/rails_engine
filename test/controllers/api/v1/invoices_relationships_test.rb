@@ -15,20 +15,37 @@ class Api::V1::InvoicesControllerTest < ActionController::TestCase
     assert_equal 1, transactions.last[:invoice_id]
   end
 
-  test "#invoices" do
-    skip
-    get :invoices, format: :json, id: Invoice.first.id
-    invoices = JSON.parse(response.body, symbolize_names: true)
+  test "#invoice_items" do
+    get :invoice_items, format: :json, id: Invoice.first.id
+    invoice_items = JSON.parse(response.body, symbolize_names: true)
 
     assert_response :success
-    assert_equal 1, invoices.first[:id]
-    assert_equal "shipped", invoices.first[:status]
-    assert_equal 100, invoices.first[:customer_id]
-    assert_equal 1, invoices.first[:merchant_id]
+    assert_equal 1, invoice_items.first[:id]
+    assert_equal "13635", invoice_items.first[:unit_price]
+    assert_equal 5, invoice_items.first[:quantity]
+    assert_equal 1, invoice_items.first[:invoice_id]
 
-    assert_equal 2, invoices.last[:id]
-    assert_equal "shipped", invoices.last[:status]
-    assert_equal 200, invoices.last[:customer_id]
-    assert_equal 1, invoices.last[:merchant_id]
+    assert_equal 2, invoice_items.last[:id]
+    assert_equal "13635", invoice_items.last[:unit_price]
+    assert_equal 9, invoice_items.last[:quantity]
+    assert_equal 1, invoice_items.last[:invoice_id]
+  end
+
+  test "#items" do
+    get :items, format: :json, id: Invoice.first.id
+    items = JSON.parse(response.body, symbolize_names: true)
+
+    assert_response :success
+    assert_equal 2, items.first[:id]
+    assert_equal "Item Autem Minima", items.first[:name]
+    assert_equal "Cumque consequuntur ad.", items.first[:description]
+    assert_equal "67076", items.first[:unit_price]
+    assert_equal 1, items.first[:merchant_id]
+
+    assert_equal 4, items.last[:id]
+    assert_equal "Blah Blah", items.last[:name]
+    assert_equal "Crieus jtheos kthneklsp.", items.last[:description]
+    assert_equal "80888", items.last[:unit_price]
+    assert_equal 2, items.last[:merchant_id]
   end
 end

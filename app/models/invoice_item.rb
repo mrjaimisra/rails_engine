@@ -1,8 +1,8 @@
 class InvoiceItem < ActiveRecord::Base
   before_save :convert_unit_price
 
-  belongs_to :invoice
   belongs_to :item
+  belongs_to :invoice
 
   private
 
