@@ -49,7 +49,7 @@ Rails.application.routes.draw do
       get "invoice_items/:id/item", to: "invoice_items#item"
 
       resources :transactions, only: [:index, :show]
-
+      get "transactions/:id/invoice", to: "transactions#invoice"
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
