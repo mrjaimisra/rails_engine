@@ -21,6 +21,16 @@ class Api::V1::InvoiceItemsController < ApplicationController
     respond_with InvoiceItem.all.shuffle.pop
   end
 
+  def invoice
+    invoice_item = InvoiceItem.find_by(id: params[:id])
+    respond_with invoice_item.invoice
+  end
+
+  def item
+    invoice_item = InvoiceItem.find_by(id: params[:id])
+    respond_with invoice_item.item
+  end
+
   private
 
   def invoice_item_params

@@ -21,14 +21,9 @@ class Api::V1::TransactionsController < ApplicationController
     respond_with Transaction.all.shuffle.pop
   end
 
-  def items
+  def invoice
     transaction = Transaction.find_by(id: params[:id])
-    respond_with transaction.items
-  end
-
-  def invoices
-    transaction = Transaction.find_by(id: params[:id])
-    respond_with transaction.invoices
+    respond_with transaction.invoice
   end
 
   private

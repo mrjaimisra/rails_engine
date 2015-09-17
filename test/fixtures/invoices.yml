@@ -16,6 +16,14 @@ two:
 
 three:
   id: 3
+  customer_id: 100
+  merchant_id: 2
+  status: not shipped
+  created_at: 2012-03-12 05:54:09 UTC
+  updated_at: 2012-03-12 05:54:09 UTC
+
+four:
+  id: 5
   customer_id: 200
   merchant_id: 3
   status: not shipped

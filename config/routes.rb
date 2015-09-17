@@ -31,10 +31,26 @@ Rails.application.routes.draw do
       get "merchants/:id/invoices", to: "merchants#invoices"
 
       resources :customers, only: [:index, :show]
+      get "customers/:id/invoices", to: "customers#invoices"
+      get "customers/:id/transactions", to: "customers#transactions"
+
       resources :items, only: [:index, :show]
+      get "items/:id/invoice_items", to: "items#invoice_items"
+      get "items/:id/merchant", to: "items#merchant"
+
       resources :invoices, only: [:index, :show]
+      get "invoices/:id/transactions", to: "invoices#transactions"
+      get "invoices/:id/invoice_items", to: "invoices#invoice_items"
+      get "invoices/:id/items", to: "invoices#items"
+      get "invoices/:id/customer", to: "invoices#customer"
+      get "invoices/:id/merchant", to: "invoices#merchant"
+
       resources :invoice_items, only: [:index, :show]
+      get "invoice_items/:id/invoice", to: "invoice_items#invoice"
+      get "invoice_items/:id/item", to: "invoice_items#item"
+
       resources :transactions, only: [:index, :show]
+      get "transactions/:id/invoice", to: "transactions#invoice"
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

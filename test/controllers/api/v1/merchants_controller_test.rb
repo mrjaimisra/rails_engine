@@ -20,7 +20,7 @@ class Api::V1::MerchantsControllerTest < ActionController::TestCase
   end
 
   test "#find by id" do
-    get :find, format: :json, id: Merchant.last.id
+    get :find, format: :json, id: Merchant.last .id
     merchant = JSON.parse(response.body, symbolize_names: true)
 
     assert_response :success
