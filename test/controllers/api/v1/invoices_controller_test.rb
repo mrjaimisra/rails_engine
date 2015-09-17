@@ -26,7 +26,7 @@ class Api::V1::InvoicesControllerTest < ActionController::TestCase
     invoice = JSON.parse(response.body, symbolize_names: true)
 
     assert_response :success
-    assert_equal 3, invoice[:id]
+    assert_equal 5, invoice[:id]
     assert_equal "not shipped", invoice[:status]
   end
 

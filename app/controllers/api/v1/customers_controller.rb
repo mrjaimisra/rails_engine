@@ -21,6 +21,17 @@ class Api::V1::CustomersController < ApplicationController
     respond_with Customer.all.shuffle.pop
   end
 
+  def invoices
+    customer = Customer.find_by(id: params[:id])
+    respond_with customer.invoices
+  end
+
+  def transactions
+    customer = Customer.find_by(id: params[:id])
+
+    respond_with customer.transactions
+  end
+
   private
 
     def customer_params

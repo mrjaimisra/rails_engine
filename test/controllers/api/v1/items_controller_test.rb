@@ -54,7 +54,7 @@ class Api::V1::ItemsControllerTest < ActionController::TestCase
   end
 
   test "#find by merchant_id" do
-    get :find, format: :json, merchant_id: Item.last.merchant_id
+    get :find, format: :json, merchant_id: Item.fourth.merchant_id
     item = JSON.parse(response.body, symbolize_names: true)
 
     assert_response :success
