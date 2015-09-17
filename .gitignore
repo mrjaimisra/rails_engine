@@ -18,3 +18,6 @@
 !/log/development.log
 /tmp
 log
+
+# Ignore coverage files.
+coverage
