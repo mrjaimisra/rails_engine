@@ -27,7 +27,7 @@ class Api::V1::InvoiceItemsControllerTest < ActionController::TestCase
     invoice_item = JSON.parse(response.body, symbolize_names: true)
 
     assert_response :success
-    assert_equal 3, invoice_item[:id]
+    assert_equal 4, invoice_item[:id]
     assert_equal 9, invoice_item[:quantity]
   end
 
@@ -44,7 +44,7 @@ class Api::V1::InvoiceItemsControllerTest < ActionController::TestCase
     invoice_item = JSON.parse(response.body, symbolize_names: true)
 
       assert_response :success
-    assert_equal 3, invoice_item[:id]
+    assert_equal 4, invoice_item[:id]
   end
 
   test "#find by item_id" do
@@ -60,7 +60,7 @@ class Api::V1::InvoiceItemsControllerTest < ActionController::TestCase
     invoice_item = JSON.parse(response.body, symbolize_names: true)
 
     assert_response :success
-    assert_equal 3, invoice_item[:id]
+    assert_equal 4, invoice_item[:id]
   end
 
   test "#find all by quantity" do

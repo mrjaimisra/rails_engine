@@ -25,7 +25,7 @@ class Api::V1::InvoicesControllerTest < ActionController::TestCase
     assert_equal 5, invoice_items.first[:quantity]
     assert_equal 1, invoice_items.first[:invoice_id]
 
-    assert_equal 2, invoice_items.last[:id]
+    assert_equal 3, invoice_items.last[:id]
     assert_equal "13635", invoice_items.last[:unit_price]
     assert_equal 9, invoice_items.last[:quantity]
     assert_equal 1, invoice_items.last[:invoice_id]
@@ -36,10 +36,10 @@ class Api::V1::InvoicesControllerTest < ActionController::TestCase
     items = JSON.parse(response.body, symbolize_names: true)
 
     assert_response :success
-    assert_equal 2, items.first[:id]
-    assert_equal "Item Autem Minima", items.first[:name]
-    assert_equal "Cumque consequuntur ad.", items.first[:description]
-    assert_equal "67076", items.first[:unit_price]
+    assert_equal 1, items.first[:id]
+    assert_equal "Item Qui Esse", items.first[:name]
+    assert_equal "Nihil autem sit odio inventore deleniti.", items.first[:description]
+    assert_equal "75107", items.first[:unit_price]
     assert_equal 1, items.first[:merchant_id]
 
     assert_equal 4, items.last[:id]
