@@ -43,7 +43,7 @@ class Api::V1::InvoicesControllerTest < ActionController::TestCase
     invoice = JSON.parse(response.body, symbolize_names: true)
 
     assert_response :success
-    assert_equal 3, invoice[:id]
+    assert_equal 2, invoice[:id]
   end
 
   test "#find by merchant_id" do
@@ -51,7 +51,7 @@ class Api::V1::InvoicesControllerTest < ActionController::TestCase
     invoice = JSON.parse(response.body, symbolize_names: true)
 
     assert_response :success
-    assert_equal 2, invoice[:id]
+    assert_equal 1, invoice[:id]
   end
 
   test "#find all by customer_id" do
